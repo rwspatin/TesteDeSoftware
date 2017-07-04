@@ -1,0 +1,11 @@
+br\com\irrfweb\model\Calculo.class
+br\com\irrfweb\action\impl\ErroAction.class
+br\com\irrfweb\dao\CalculoDAO.class
+br\com\irrfweb\main\Main.class
+br\com\irrfweb\action\impl\BaseCalculoAction.class
+br\com\irrfweb\action\impl\HomeAction.class
+br\com\irrfweb\controller\IRRFController.class
+br\com\irrfweb\action\impl\CalculoAction.class
+br\com\irrfweb\action\impl\DeducoesAction.class
+br\com\irrfweb\action\ICommand.class
+br\com\irrfweb\action\impl\ImpostoAction.class

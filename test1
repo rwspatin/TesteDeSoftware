@@ -1,0 +1,102 @@
+package com.example.tests;
+
+import java.util.regex.Pattern;
+import java.util.concurrent.TimeUnit;
+import org.junit.*;
+import static org.junit.Assert.*;
+import static org.hamcrest.CoreMatchers.*;
+import org.openqa.selenium.*;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.Select;
+
+public class Test1 {
+  private WebDriver driver;
+  private String baseUrl;
+  private boolean acceptNextAlert = true;
+  private StringBuffer verificationErrors = new StringBuffer();
+
+  @Before
+  public void setUp() throws Exception {
+    driver = new FirefoxDriver();
+    baseUrl = "http://localhost:8084/IRRFWeb/";
+    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+  }
+
+  @Test
+  public void test1() throws Exception {
+    driver.get(baseUrl + "/IRRFWeb/");
+    driver.findElement(By.id("cpNome")).clear();
+    driver.findElement(By.id("cpNome")).sendKeys("10");
+    driver.findElement(By.id("cpRend")).clear();
+    driver.findElement(By.id("cpRend")).sendKeys("R$ 0,01");
+    driver.findElement(By.id("cpContri")).clear();
+    driver.findElement(By.id("cpContri")).sendKeys("R$ 0,01");
+    driver.findElement(By.id("cpDepend")).clear();
+    driver.findElement(By.id("cpDepend")).sendKeys("1");
+    driver.findElement(By.id("cpPensao")).clear();
+    driver.findElement(By.id("cpPensao")).sendKeys("R$ 0,01");
+    driver.findElement(By.id("cpMedico")).clear();
+    driver.findElement(By.id("cpMedico")).sendKeys("R$ 0,01");
+    driver.findElement(By.id("cpEducacao")).clear();
+    driver.findElement(By.id("cpEducacao")).sendKeys("R$ 0,01");
+    driver.findElement(By.id("cpOutras")).clear();
+    driver.findElement(By.id("cpOutras")).sendKeys("R$ 0,01");
+    try {
+      assertEquals("R$ 2.275,09", driver.findElement(By.id("cpDeducoes")).getAttribute("value"));
+    } catch (Error e) {
+      verificationErrors.append(e.toString());
+    }
+    try {
+      assertEquals("-R$ 2.275,09", driver.findElement(By.id("cpBase")).getAttribute("value"));
+    } catch (Error e) {
+      verificationErrors.append(e.toString());
+    }
+    try {
+      assertEquals("R$ 0,00", driver.findElement(By.id("cpImp")).getAttribute("value"));
+    } catch (Error e) {
+      verificationErrors.append(e.toString());
+    }
+  }
+
+  @After
+  public void tearDown() throws Exception {
+    driver.quit();
+    String verificationErrorString = verificationErrors.toString();
+    if (!"".equals(verificationErrorString)) {
+      fail(verificationErrorString);
+    }
+  }
+
+  private boolean isElementPresent(By by) {
+    try {
+      driver.findElement(by);
+      return true;
+    } catch (NoSuchElementException e) {
+      return false;
+    }
+  }
+
+  private boolean isAlertPresent() {
+    try {
+      driver.switchTo().alert();
+      return true;
+    } catch (NoAlertPresentException e) {
+      return false;
+    }
+  }
+
+  private String closeAlertAndGetItsText() {
+    try {
+      Alert alert = driver.switchTo().alert();
+      String alertText = alert.getText();
+      if (acceptNextAlert) {
+        alert.accept();
+      } else {
+        alert.dismiss();
+      }
+      return alertText;
+    } finally {
+      acceptNextAlert = true;
+    }
+  }
+}
