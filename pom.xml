@@ -14,13 +14,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     <!-- Mockito -->
-    <dependencies>        
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-android</artifactId>
-            <version>2.8.52</version>
-            <type>pom</type>
-        </dependency>
+    <dependencies>
         <!-- Núcleo do Hibernate -->
         <dependency>
             <groupId>org.hibernate</groupId>
@@ -36,21 +30,21 @@
             <version>5.2.10.Final</version>
             <scope>compile</scope>
         </dependency>
-        
+
         <!-- Drive do JDBC -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.42</version>
         </dependency>
-        
+
         <!-- Hibernate c3p0 connection pool -->
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-c3p0</artifactId>
             <version>5.2.10.Final</version>
         </dependency>
-        
+
         <!-- JSTL -->
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -63,12 +57,13 @@
             <artifactId>standard</artifactId>
             <version>1.1.2</version>
         </dependency>
-        
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.12</version>
             <scope>test</scope>
+            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>org.hamcrest</groupId>
@@ -82,7 +77,13 @@
             <version>3.4.0</version>
             <scope>test</scope>
         </dependency>
-        
+        <dependency>
+            <groupId>org.dbunit</groupId>
+            <artifactId>dbunit</artifactId>
+            <version>2.4.9</version>
+            <scope>test</scope>
+            <type>jar</type>
+        </dependency>
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>
